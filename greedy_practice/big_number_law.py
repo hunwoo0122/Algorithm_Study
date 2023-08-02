@@ -18,6 +18,6 @@ while True:
     if m == 0:
         break
     result += second
-    m -= 1
+    m -= 1 # m = m - 1
 
 print(result)
