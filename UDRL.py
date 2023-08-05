@@ -1,5 +1,5 @@
 n = int(input())
-x, y = 1,1 # 시작좌표
+x, y = 1, 1 # 시작좌표
 plans = input().split()
 
 # L, R, U, D에 따른 이동 방향
@@ -13,8 +13,8 @@ for plan in plans:
         if plan == move_types[i]:
             nx=x+dx[i]
             ny=y+dy[i]
-    if nx <1 or ny<1 or nx>n or ny>n:
+    if nx < 1 or ny < 1 or nx > n or ny > n:
         continue            # 무시
-    x, y= nx, ny
+    x, y = nx, ny
 
-print(x,y)
+print(x, y)
