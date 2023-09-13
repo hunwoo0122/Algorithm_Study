@@ -1,7 +1,12 @@
 import sys
+import math
+
 a, b = map(int, sys.stdin.readline().split())
 
-for i in range(max(a, b), (a*b)+1):
-  if i % a == 0 and i % b == 0:
-    print(i) #24
-    break
+# 최대공약수(GCD) 계산
+gcd = math.gcd(a, b)
+
+# 최소공배수(LCM) 계산
+lcm = (a * b) // gcd
+
+print(lcm)
