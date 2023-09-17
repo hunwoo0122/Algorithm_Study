@@ -14,5 +14,5 @@ for _ in range(b):
         print(directory[index])
     else:
         index = directory.index(query)
-        print(index + 1)
+        print(index + 1) # do it!
 
