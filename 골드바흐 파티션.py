@@ -14,7 +14,7 @@ for _ in range(n):
         if is_prime:
             array.append(i)
 
-    start , end = 0, len(array)-1
+    start, end = 0, len(array)-1
 
     while array[start] <= array[end]:
         if array[start] + array[end] == a:
