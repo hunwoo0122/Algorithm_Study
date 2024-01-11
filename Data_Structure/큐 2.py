@@ -2,7 +2,7 @@ from collections import deque
 import sys
 
 n = int(sys.stdin.readline())
-queue= deque()
+queue = deque()
 for _ in range(n):
     commend = sys.stdin.readline().split()
     if commend[0] == 'push':
