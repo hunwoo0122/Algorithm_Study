@@ -22,7 +22,7 @@ def dfs(depth, total, plus, minus, multiply, divide):
         dfs(depth + 1, total * num[depth], plus, minus, multiply - 1, divide)
     if divide:
         dfs(depth + 1, int(total / num[depth]), plus, minus, multiply, divide - 1)
-
+                       # //가 아니라 int(/) 인 이유는 음수일 때 // 는 내림차순이 된다
 dfs(1, num[0], op[0], op[1], op[2], op[3])
 print(maximum)
 print(minimum)
