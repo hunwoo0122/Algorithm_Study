@@ -10,7 +10,7 @@ for _ in range(a):
     n += 1
 while len(answer) != a:
     for _ in range(b-1):
-        queue.append(queue.popleft())
-    answer.append(queue.popleft())
+        queue.append(queue.popleft())  # b-1번째 만큼 popleft해주고
+    answer.append(queue.popleft()) # b번째 popleft
 formatted_output = "<" + ", ".join(map(str, answer)) + ">"
 print(formatted_output)
