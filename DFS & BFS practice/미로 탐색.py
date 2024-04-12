@@ -20,9 +20,11 @@ def bfs(x, y):
             nx = x + dx[i]
             ny = y + dy[i]
 
+            # 미로의 리스트 인덱스의 경계를 먼저 설정해야함
             if nx < 0 or nx >= N or ny < 0 or ny >= M:
                 continue
-
+            # 그 다음 그 미로의 길이 막혀있는지 갈 수 있는지 확인
+            # 조건문의 순서를 반대로 하면 인덱스의 범위를 넘어서면서 막힌길을 확인 할 수 있으니 인덱스 에러가 뜸
             if maze[nx][ny] == 0:
                 continue
 
