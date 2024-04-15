@@ -1,38 +1,32 @@
 import sys
 input = sys.stdin.readline
-def count_repainting(board, chess):
-    count = 0
+
+n, m = map(int, input().split())
+board = []
+INF = 21470000000
+min_repainting = INF
+def cut_repainting(board, chess):
+    cnt = 0
     for i in range(8):
         for j in range(8):
             if board[i][j] != chess[i][j]:
-                count += 1
-    return count
+                cnt += 1
+    return cnt
 
-
-
-N, M = map(int, input().split())
-board = []
-for _ in range(N):
+for _ in range(n):
     board.append(list(input().strip()))
 
-min_repaint = float('inf')  # 초기값을 무한대로 설정
+for i in range(n-7):
+    for j in range(m-7):
+        temp_chess1 = [board[x][j:j+8] for x in range(i, i+8)]
+        temp_chess2 = [board[x][j:j+8] for x in range(i, i+8)]
 
-for i in range(N - 7):
-    for j in range(M - 7):
-        # (i, j)부터 8x8 크기의 체스판 생성
-        # 전체 보드에서 체스판을 일일히 쪼개는 작업
-        chess1 = [board[x][j:j + 8] for x in range(i, i + 8)]
-        chess2 = [board[x][j:j + 8] for x in range(i, i + 8)]
+        repaint1 = cut_repainting(temp_chess1, ['WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB',
+                                                'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW',
+                                                'WBWBWBWB', 'BWBWBWBW'])
+        repaint2 = cut_repainting(temp_chess2, ['BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW',
+                                                'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB',
+                                                'BWBWBWBW', 'WBWBWBWB'])
+        min_repainting = min(min_repainting, repaint1, repaint2)
 
-        # 맨 왼쪽 위 칸이 흰색인 경우와 검은색인 경우에 대해 칠해야 하는 정사각형 개수를 계산하고 최솟값 갱신
-        repaint1 = count_repainting(chess1, ["WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW",
-                                                 "WBWBWBWB", "BWBWBWBW"])
-        repaint2 = count_repainting(chess2, ["BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB",
-                                                 "BWBWBWBW", "WBWBWBWB"])
-
-        min_repaint = min(min_repaint, repaint1, repaint2)
-
-print(min_repaint)
-
-
-
+print(min_repainting)
