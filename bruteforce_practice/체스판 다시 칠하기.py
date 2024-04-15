@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 def count_repainting(board, chess):
     count = 0
     for i in range(8):
@@ -11,14 +13,14 @@ def count_repainting(board, chess):
 N, M = map(int, input().split())
 board = []
 for _ in range(N):
-    row = input()
-    board.append(row)
+    board.append(list(input().strip()))
 
 min_repaint = float('inf')  # 초기값을 무한대로 설정
 
 for i in range(N - 7):
     for j in range(M - 7):
         # (i, j)부터 8x8 크기의 체스판 생성
+        # 전체 보드에서 체스판을 일일히 쪼개는 작업
         chess1 = [board[x][j:j + 8] for x in range(i, i + 8)]
         chess2 = [board[x][j:j + 8] for x in range(i, i + 8)]
 
